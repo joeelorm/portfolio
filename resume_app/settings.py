@@ -39,7 +39,7 @@ AWS_S3_SIGNATURE_VERSION='s3v4'
 SECRET_KEY = env('SECRET_KEY', default="unsafe-secret-key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['127.0.0.1', 'josephsegbefia.herokuapp.com']
 
