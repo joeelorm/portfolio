@@ -21,6 +21,16 @@ environ.Env.read_env()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+#AWS S3 SETTINGS
+AWS_ACCESS_KEY_ID='AKIAYCRNHD3HIVYZ6CN6'
+AWS_SECRET_ACCESS_KEY='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'
+AWS_STORAGE_BUCKET_NAME='josephsegbefiaportfolio'
+AWS_URL='https://josephsegbefiaportfolio.s3.amazonaws.com/'
+AWS_DEFAULT_ACL=None
+AWS_S3_REGION_NAME='us-east-2'
+AWS_S3_SIGNATURE_VERSION='s3v4'
+
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -51,7 +61,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -111,14 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-#AWS S3 SETTINGS
-AWS_ACCESS_KEY_ID='AKIAYCRNHD3HIVYZ6CN6'
-AWS_SECRET_ACCESS_KEY='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'
-AWS_STORAGE_BUCKET_NAME='josephsegbefiaportfolio'
-AWS_URL='https://josephsegbefiaportfolio.s3.amazonaws.com/'
-AWS_DEFAULT_ACL=None
-AWS_S3_REGION_NAME='us-east-2'
-AWS_S3_SIGNATURE_VERSION='s3v4'
 
 
 # Internationalization
@@ -144,12 +146,15 @@ USE_TZ = True
 # ]
 
 STATIC_URL = AWS_URL + "/static/"
-#STATIC_ROOT = BASE_DIR / "staticfiles"
-#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 MEDIA_URL = AWS_URL + "/media/"
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#STATIC_ROOT = BASE_DIR / "staticfiles"
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+
+
+
 #MEDIA_ROOT = BASE_DIR / "mediafiles"
 
 # Default primary key field type
