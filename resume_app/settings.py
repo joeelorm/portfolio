@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'ckeditor',
+    'ckeditor_uploader',
     'main',
     'whitenoise.runserver_nostatic',
     'storages'
@@ -166,7 +167,7 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-CKEDITOR_UPLOAD_PATH = "ckeditor"
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 import django_heroku
 django_heroku.settings(locals(), staticfiles=False)
