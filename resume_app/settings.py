@@ -164,8 +164,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-#CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
-AWS_QUERYSTRING_AUTH = False
+#AWS_QUERYSTRING_AUTH = False
 
 django_heroku.settings(locals(), staticfiles=False)
