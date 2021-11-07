@@ -33,6 +33,8 @@ AWS_S3_REGION_NAME = 'us-east-2'
 AWS_S3_SIGNATURE_VERSION = 's3v4'
 
 
+AWS_S3_CUSTOM_DOMAIN = 'josephsegbefiaportfolio.s3.amazonaws.com'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
