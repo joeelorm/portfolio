@@ -10,26 +10,27 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import django_heroku
+import dj_database_url
 from pathlib import Path
 import os
 import environ
 
-#Initialise env variables
+# Initialise env variables
 env = environ.Env()
 environ.Env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-#AWS S3 SETTINGS
-AWS_ACCESS_KEY_ID='AKIAYCRNHD3HIVYZ6CN6'
-AWS_SECRET_ACCESS_KEY='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'
-AWS_STORAGE_BUCKET_NAME='josephsegbefiaportfolio'
-AWS_URL='https://josephsegbefiaportfolio.s3.amazonaws.com/'
-AWS_DEFAULT_ACL=None
-AWS_S3_REGION_NAME='us-east-2'
-AWS_S3_SIGNATURE_VERSION='s3v4'
-
+# AWS S3 SETTINGS
+AWS_ACCESS_KEY_ID = 'AKIAYCRNHD3HIVYZ6CN6'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'josephsegbefiaportfolio'
+AWS_URL = 'https://josephsegbefiaportfolio.s3.amazonaws.com/'
+AWS_DEFAULT_ACL = None
+AWS_S3_REGION_NAME = 'us-east-2'
+AWS_S3_SIGNATURE_VERSION = 's3v4'
 
 
 # Quick-start development settings - unsuitable for production
@@ -98,9 +99,9 @@ WSGI_APPLICATION = 'resume_app.wsgi.application'
 
 DATABASES = {}
 
-import dj_database_url
 
-DATABASES['default'] = dj_database_url.config(conn_max_age = 600, ssl_require = True)
+DATABASES['default'] = dj_database_url.config(
+    conn_max_age=600, ssl_require=True)
 
 
 # Password validation
@@ -120,8 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
-
 
 
 # Internationalization
@@ -157,8 +156,6 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 #STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
-
-
 #MEDIA_ROOT = BASE_DIR / "mediafiles"
 
 # Default primary key field type
@@ -167,7 +164,8 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CKEDITOR_BASEPATH = "/static/ckeditor/ckeditor/"
-CKEDITOR_UPLOAD_PATH = AWS_URL + "uploads/"
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
-import django_heroku
+AWS_QUERYSTRING_AUTH = False
+
 django_heroku.settings(locals(), staticfiles=False)
